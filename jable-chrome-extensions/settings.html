@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jable视频下载插件-配置</title>
+    <style>
+        body {
+            background: #353f42;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        label {
+            padding: 0 5px;
+            font-size: 18px;
+        }
+        
+        .login-form {
+            /* padding: auto; */
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 500px;
+            background: #F7F7F7;
+            padding: 25px 15px 25px 10px;
+            /* font: 12px Georgia, "Times New Roman", Times, serif; */
+            /* color: #888; */
+            /* text-shadow: 1px 1px 1px #FFF; */
+            /* border: 1px solid #E4E4E4; */
+        }
+        
+        .input-content {
+            text-align: center;
+            /* padding: 20px; */
+            /* width: 100%; */
+            /* margin-top: 30px; */
+            /* height: 120px; */
+        }
+        
+        .input-content input {
+            /* display: block; */
+            width: 350px;
+            height: 40px;
+            border: 1px solid #dad9d6;
+            background: #ffffff;
+            font-size: 18px;
+            /* padding-left: 10px; */
+            /* padding-right: 10px; */
+        }
+        
+        .input-content input:focus {
+            outline: none;
+            border: 1px solid #0bc5de;
+        }
+        
+        .enter-btn {
+            width: 350px;
+            height: 40px;
+            color: #fff;
+            background: #0bc5de;
+            line-height: 40px;
+            text-align: center;
+            border: 0px;
+        }
+        
+        .enter-btn:hover {
+            cursor: pointer;
+            background: #1db5c9;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="login-form" id="settings-from">
+        <div class="input-content">
+            <div>
+                <label>下载目录</label>
+                <input type="text" autocomplete="off" placeholder="" id="workDir" name="workDir" value="" />
+            </div>
+        </div>
+        <div style="text-align: center;margin-top: 40px;">
+            <button type="button" class="enter-btn" id="savebotton">保存</button>
+        </div>
+    </form>
+</body>
+<script type="text/javascript" src="./settings.js"></script>
+
+</html>

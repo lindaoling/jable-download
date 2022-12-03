@@ -1,0 +1,30 @@
+{
+	"manifest_version": 2,
+	"name": "jable视频下载插件",
+	"version": "0.1",
+	"description": "下载jable.tv",
+	"author": "Halo",
+	"icons":
+	{
+		"16":"./icon_128.png",
+		"48": "./icon_128.png",
+		"128": "./icon_128.png"
+	},
+	"permissions": [
+		"storage"
+	],
+	"content_scripts": 
+	[
+		{
+			"matches": [
+				"https://jable.tv/videos/*/"
+			],
+			"js": ["content-script.js"]
+		}
+	],
+	"options_page": "settings.html",
+	"web_accessible_resources":[
+		"inject.js"
+	],
+	"homepage_url": "https://www.augety.com"
+}
