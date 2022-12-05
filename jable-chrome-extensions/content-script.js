@@ -7,7 +7,7 @@ s.onload = function() { this.remove(); };
 console.log('contents-script.js');
 // 把配置注入到原网页中
 chrome.storage.local.get(function(settingsObj) {
-    settingsObj.workDir = settingsObj.workDir || 'C:\\Users\\Public\\Desktop'
+    settingsObj.workDir = settingsObj.workDir || '%USERPROFILE%\\Downloads\\m3u8dl'
     let settingsJsonStr = JSON.stringify(settingsObj);
     // 生成 script 直接注入代码，把settings注入到原网页
     var script_tag = document.createElement('script');
