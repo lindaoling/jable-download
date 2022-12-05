@@ -26,7 +26,7 @@ chrome浏览器中，点击扩展图标 -> 选项，填写默认下载目录，�
 ![setting1](img/setting_1.png)
 ![setting2](img/setting_2.png)
 
-**如果未设置下载目录，默认下载到 `C:\Users\Public\Desktop`**
+**如果未设置下载目录，默认下载到 `%USERPROFILE%\Downloads\m3u8dl`，也就是当前用户下载目录** 
 
 **如果下载失败，请设置一个不是C盘的目录，例如：D:\Downloads**
 
