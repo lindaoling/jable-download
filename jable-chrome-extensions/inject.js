@@ -328,7 +328,8 @@ if (settings.workDir) {
 
     // 标题
     let title = document.head.querySelector('[property="og:title"]').content;
-    console.log({ "title": title, "url": hlsUrl });
+    let preview = document.head.querySelector('[property="og:image"]').content;
+    console.log({ "title": title, "url": hlsUrl,"preview":preview });
     // 保存目录，注意window路径 \ 问题
     // let savepath = 'D:\\Download\\jable.tv';
     // 协议名
