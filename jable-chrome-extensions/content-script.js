@@ -4,7 +4,6 @@ s.src = chrome.runtime.getURL('inject.js');
 s.onload = function() { this.remove(); };
 (document.head || document.documentElement).appendChild(s);
 
-console.log('contents-script.js');
 // 把配置注入到原网页中
 chrome.storage.local.get().then(function(settingsObj) {
     settingsObj.workDir = settingsObj.workDir || '%USERPROFILE%/Downloads/m3u8dl'
