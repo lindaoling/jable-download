@@ -1,5 +1,5 @@
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "jable视频下载插件",
 	"version": "0.2",
 	"description": "下载jable.tv",
@@ -13,6 +13,9 @@
 	"permissions": [
 		"storage"
 	],
+	"host_permissions": [
+		"https://jable.tv/*"
+	],
 	"content_scripts": 
 	[
 		{
@@ -22,9 +25,15 @@
 			"js": ["content-script.js"]
 		}
 	],
-	"options_page": "settings.html",
+	"options_ui": {
+		"page": "settings.html",
+		"open_in_tab": true
+	},
 	"web_accessible_resources":[
-		"inject.js"
+		{
+			"resources": ["inject.js"],
+			"matches": ["https://jable.tv/*"]
+		}
 	],
 	"homepage_url": "https://www.augety.com"
 }

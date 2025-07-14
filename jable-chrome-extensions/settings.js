@@ -8,17 +8,23 @@ function serialize(form) {
     return request;
 }
 
-chrome.storage.local.get(function(settingsObj) {
+chrome.storage.local.get().then(function(settingsObj) {
     document.getElementById('workDir').value = settingsObj.workDir || '';
+}).catch(function(error) {
+    console.error('获取存储设置失败:', error);
+    document.getElementById('workDir').value = '';
 });
 
 document.getElementById('savebotton').addEventListener('click', function() {
     let settingsfromDom = document.getElementById('settings-from');
     let settingsObj = serialize(settingsfromDom);
-    chrome.storage.local.set(settingsObj, function() {
+    chrome.storage.local.set(settingsObj).then(function() {
         console.log('settings change');
         alert('配置成功')
             // window.close()
+    }).catch(function(error) {
+        console.error('保存设置失败:', error);
+        alert('配置失败，请重试');
     });
     // console.log(settingsObj)
     // console.log('saveSettings')
