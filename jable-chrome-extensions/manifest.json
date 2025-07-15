@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "jable视频下载插件",
-	"version": "0.2",
+	"version": "0.3",
 	"description": "下载jable.tv",
 	"author": "Halo",
 	"icons":
@@ -16,6 +16,9 @@
 	"host_permissions": [
 		"https://jable.tv/*"
 	],
+	"background": {
+		"service_worker": "background.js"
+	},
 	"content_scripts": 
 	[
 		{
