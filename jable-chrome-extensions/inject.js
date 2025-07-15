@@ -22,31 +22,40 @@
     }
 
     function renderDownloadButton() {
+        console.log('config',config);
         // hlsUrl 是 m3u8地址（假设外部有定义或后续补充）
         let hlsUrl = typeof window.hlsUrl !== 'undefined' ? window.hlsUrl : '';
         let title = '';
+        let ProtocolName = 'm3u8dl';
+        let _downloadLinkTag = `<a id='jable-m3u8dl-download-btn' href='javascript:alert("未配置下载目录")' style='margin-left:10px;cursor:pointer;'> [ 未配置下载目录 ] </a>`;
+
         try {
             title = document.head.querySelector('[property="og:title"]').content;
         } catch (e) {
             title = document.title || '未命名';
         }
-        let ProtocolName = 'm3u8dl';
-        let M3U8dlProtocolParam = `${hlsUrl} --saveName "${title}" --workDir "${config && config.workDir ? config.workDir : ''}" --enableDelAfterDone --disableDateInfo`;
-        let b64Param = encodeBase64(M3U8dlProtocolParam);
-        let _downloadLinkTag = `<a id='jable-m3u8dl-download-btn' href='${ProtocolName}://${b64Param}' style='margin-left:10px;cursor:pointer;'> [ 下载 ] </a>`;
+
+        
+        if(hlsUrl && config && config.workDir){
+            
+            let M3U8dlProtocolParam = `${hlsUrl} --saveName "${title}" --workDir "${config && config.workDir ? config.workDir : '%USERPROFILE%\Downloads"'}" --enableDelAfterDone --disableDateInfo`;
+            let b64Param = encodeBase64(M3U8dlProtocolParam);
+            _downloadLinkTag = `<a id='jable-m3u8dl-download-btn' href='${ProtocolName}://${b64Param}' style='margin-left:10px;cursor:pointer;'> [ 下载 ] </a>`;
+        }
+        
         let titleconteinar = document.getElementsByClassName('header-left')[0];
         if (titleconteinar && titleconteinar.getElementsByTagName('h4')[0]) {
             titleconteinar.getElementsByTagName('h4')[0].innerHTML = title + _downloadLinkTag;
             // 绑定点击事件
-            let btn = document.getElementById('jable-m3u8dl-download-btn');
-            if (btn) {
-                btn.addEventListener('click', function(e) {
-                    if (!config || !config.workDir) {
-                        e.preventDefault();
-                        alert('未配置下载目录，请先在插件设置中配置！');
-                    }
-                });
-            }
+            // let btn = document.getElementById('jable-m3u8dl-download-btn');
+            // if (btn) {
+            //     btn.addEventListener('click', function(e) {
+            //         if (!config || !config.workDir) {
+            //             e.preventDefault();
+            //             alert('未配置下载目录，请先在插件设置中配置！');
+            //         }
+            //     });
+            // }
         }
     }
 

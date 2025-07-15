@@ -25,11 +25,11 @@
 			"matches": [
 				"https://jable.tv/videos/*/"
 			],
-			"js": ["content-script.js"]
+			"js": ["content.js"]
 		}
 	],
 	"options_ui": {
-		"page": "settings.html",
+		"page": "options.html",
 		"open_in_tab": true
 	},
 	"web_accessible_resources":[
