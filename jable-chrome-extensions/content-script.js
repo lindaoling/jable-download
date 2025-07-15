@@ -4,22 +4,18 @@ s.src = chrome.runtime.getURL('inject.js');
 s.onload = function() { this.remove(); };
 (document.head || document.documentElement).appendChild(s);
 
-// 把配置注入到原网页中
+// 通过postMessage传递配置参数到inject.js
 chrome.storage.local.get().then(function(settingsObj) {
-    settingsObj.workDir = settingsObj.workDir || '%USERPROFILE%/Downloads/m3u8dl'
-    let settingsJsonStr = JSON.stringify(settingsObj);
-    // 生成 script 直接注入代码，把settings注入到原网页
-    var script_tag = document.createElement('script');
-    script_tag.type = 'text/javascript';
-    script_tag.text = `var settings=${settingsJsonStr};`;
-    document.body.appendChild(script_tag);
+    settingsObj.workDir = settingsObj.workDir || '';
+    window.postMessage({
+        type: 'JABLE_SETTINGS',
+        settings: settingsObj
+    }, '*');
 }).catch(function(error) {
     console.error('获取存储设置失败:', error);
-    // 使用默认设置
-    let settingsObj = { workDir: '%USERPROFILE%/Downloads/m3u8dl' };
-    let settingsJsonStr = JSON.stringify(settingsObj);
-    var script_tag = document.createElement('script');
-    script_tag.type = 'text/javascript';
-    script_tag.text = `var settings=${settingsJsonStr};`;
-    document.body.appendChild(script_tag);
+    // 依然postMessage一个空配置
+    window.postMessage({
+        type: 'JABLE_SETTINGS',
+        settings: { workDir: '' }
+    }, '*');
 });
