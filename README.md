@@ -36,4 +36,8 @@ chrome 打开 https://jable.tv/videos/xx/ 播放页面
 
 ![setting3](img/setting_3.png)
 
+# 讨论
+[加入Discord](https://discord.gg/hEpkAVks9p)
+
+
 
